@@ -332,9 +332,9 @@ while True:
             screen.blit(dungeon_bg, (-400 - (scroll[0] * 0.1), -100 - (scroll[1] * 0.05)) )
             if test_player.rect.colliderect(pygame.Rect(32,816,100,16)):
                 DUNGEON_SOUND.stop()
-                screen.fill((5,10,10))
+                screen.fill((5,200,10))
                 draw_text("you win...", MAIN_MENU_FONT, (255,255,255),screen,64,64,10)
-                draw_text("you died... " + str(test_player.fake_deaths) + " times", CHAR_FONT, (255,255,255),screen,96,344,350)
+                draw_text("you died... " + str(test_player.fake_deaths) + " times", CHAR_FONT, (255,255,255),screen,96,244,350)
                 pygame.display.update()
                 time.sleep(15)
                 pygame.quit()
@@ -516,6 +516,8 @@ while True:
             #print("Player Rect: " + str(test_player.rect))
             #print(reset_tile_list)
             if test_player.rect.y >= 800 and stage != 2:
+                test_player.kill_player()
+            elif test_player.rect.y >= 3000:
                 test_player.kill_player()
             
           
