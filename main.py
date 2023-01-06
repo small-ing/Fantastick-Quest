@@ -39,11 +39,14 @@ animation_cooldown = 500
 tile_size = (16, 16)
 spawn_list = [pygame.Rect(48, 144, 16, 16), pygame.Rect(122, 416, 16, 16), pygame.Rect(126, 176, 16, 16)]
 
-dirt = pygame.image.load('dirt.png').convert_alpha()  # How the images are loaded in
+'''dirt = pygame.image.load('dirt.png').convert_alpha()  # How the images are loaded in
 dirt = pygame.transform.scale(dirt, tile_size)  #Changing image to 16x16
 
 grass = pygame.image.load('grass.png').convert_alpha()  # How the images are loaded in
-grass = pygame.transform.scale(grass, tile_size)  #Changing image to 16x16
+grass = pygame.transform.scale(grass, tile_size)  #Changing image to 16x16'''
+
+arrow = pygame.image.load('arrow2a.png').convert_alpha()
+arrow = pygame.transform.scale(arrow, (16,16))
 
 forest_grass = pygame.image.load('tile_sets/forest_sprites/terrain_5x5.png').convert_alpha()  # How the images are loaded 
 forest_grass = pygame.transform.scale(forest_grass, tile_size)  #Changing image to 16x16
@@ -397,6 +400,9 @@ while True:
                 elif tile == 'z':
                     screen.blit(dungeon_spikesdown ,  
                                 (x * 16 - scroll[0], y * 16 - scroll[1]))
+                elif tile == '^':
+                    screen.blit(arrow,  
+                                (x * 16 - scroll[0], y * 16 - scroll[1]))
                 elif tile == 'x':
                     screen.blit(dungeon_fullstairs ,  
                                 (x * 16 - scroll[0], y * 16 - scroll[1]))
@@ -443,6 +449,8 @@ while True:
                         reset_tile_list.append(pygame.Rect((x * 16, y * 16,16,16)))
                     elif tile == 'u':
                         reset_tile_list.append(pygame.Rect((x * 16, y * 16,16,16)))
+                    elif tile == '^':
+                        pass
                     else:
                         tile_rects.append(pygame.Rect((x * tile_size[0]), (y * tile_size[1]), tile_size[0], tile_size[1]))
                 x += 1
