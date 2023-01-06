@@ -331,6 +331,7 @@ while True:
                 DUNGEON_SOUND.stop()
                 screen.fill((5,10,10))
                 draw_text("you win...", MAIN_MENU_FONT, (255,255,255),screen,64,64,10)
+                draw_text("you died... " + str(test_player.fake_deaths) + " times", CHAR_FONT, (255,255,255),screen,96,344,350)
                 pygame.display.update()
                 time.sleep(15)
                 pygame.quit()
@@ -447,6 +448,7 @@ while True:
                 x += 1
             y += 1
         #pygame.Rect(48, 144, 16, 16), pygame.Rect(122, 416, 16, 16), pygame.Rect(126, 176, 16, 16)
+        draw_text("Deaths: " + str(test_player.fake_deaths), CHAR_FONT, (255,255,255), screen, 25,25,0 )
         if stage == 0:
             test_player.update(tile_rects, reset_tile_list, pygame.Rect(48, 144, 16, 16))
         elif stage == 1:
@@ -469,7 +471,7 @@ while True:
         test_player.draw(48, frame, screen,
                          test_player.rect.x - scroll[0] - 16,
                          test_player.rect.y - scroll[1] - 24)
-        pygame.draw.rect(screen, (255, 255, 255), (test_player.rect.x - scroll[0], test_player.rect.y - scroll[1], 16, 16))
+        #pygame.draw.rect(screen, (255, 255, 255), (test_player.rect.x - scroll[0], test_player.rect.y - scroll[1], 16, 16))
         #pygame.draw.rect(screen, (255, 255, 255), (test_player.rect.x, test_player.rect.y, 16, 16))
         
         for event in pygame.event.get():

@@ -118,6 +118,7 @@ class Player(pygame.sprite.Sprite):
         self.left = False
         self.is_facing_left = False
         self.is_jumping = False
+        self.fake_deaths = 0
         self.is_dead = False
         self.y_momentum = 0
         self.air_timer = 0
@@ -138,7 +139,8 @@ class Player(pygame.sprite.Sprite):
         }
         hit_list = self.collision_test(reset_tiles)
         if hit_list:
-            print('reset')
+            #print('reset')
+            self.fake_deaths += 1
             self.rect = reset_spot
         else:
             self.rect.y += self.movement[1]
