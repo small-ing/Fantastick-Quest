@@ -11,7 +11,6 @@ pygame.init()
 pygame.mixer.init()
 pygame.font.init()
 
-
 MAIN_MENU_FONT = pygame.font.Font('alagard.ttf', 64)
 PLAY_FONT = pygame.font.Font('alagard.ttf', 56)
 
@@ -303,6 +302,7 @@ while True:
 
     while gaming:
         screen.fill((25, 35, 75))  #Sets the sky-blue BG color
+        pygame.mouse.set_cursor((8,8),(0,0),(0,0,0,0,0,0,0,0),(0,0,0,0,0,0,0,0))
         mx, my = pygame.mouse.get_pos()
         true_scroll[0] += (test_player.rect.x - true_scroll[0] - 104) / 10
         true_scroll[1] += (test_player.rect.y - true_scroll[1] - 240) / 10
@@ -333,7 +333,7 @@ while True:
             if test_player.rect.colliderect(pygame.Rect(32,816,100,16)):
                 DUNGEON_SOUND.stop()
                 screen.fill((5,200,10))
-                draw_text("you win...", MAIN_MENU_FONT, (255,255,255),screen,64,64,10)
+                draw_text("YOU WIN!", MAIN_MENU_FONT, (255,255,255),screen,64,64,10)
                 draw_text("you died... " + str(test_player.fake_deaths) + " times", CHAR_FONT, (255,255,255),screen,96,244,350)
                 pygame.display.update()
                 time.sleep(15)
@@ -473,9 +473,9 @@ while True:
                 frame = 0
         #screen.blit(pygame.transform.scale(test_player.idle_frames[frame], (48, 48)),(test_player.rect.x - scroll[0] - 16,test_player.rect.y - scroll[1] - 24))
         if test_player.is_jumping:
-            screen.blit(pygame.transform.scale(pygame.image.load('hand2.png'), (16,16)), (mx+4,my))
+            screen.blit(pygame.transform.scale(pygame.image.load('hand2.png'), (16,16)), (mx,my))
         else:
-            screen.blit(pygame.transform.scale(pygame.image.load('hand1.png'), (16,16)), (mx+4,my))
+            screen.blit(pygame.transform.scale(pygame.image.load('hand1.png'), (16,16)), (mx,my))
         test_player.draw(48, frame, screen,
                          test_player.rect.x - scroll[0] - 16,
                          test_player.rect.y - scroll[1] - 24)
